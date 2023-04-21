@@ -1,9 +1,20 @@
+import { useState, useEffect } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useSnapshot } from "valtio"
+
+import config from "../config/config"
 import state from "../store"
-import { EditorTabs, FilterTabs } from "../config/constants"
-import { CustomButton, Tab } from "../components"
-import { slideAnimation } from "../config/motion"
+import { download } from "../assets"
+import { downloadCanvasToImage, reader } from "../config/helpers"
+import { EditorTabs, FilterTabs, DecalTypes } from "../config/constants"
+import { fadeAnimation, slideAnimation } from "../config/motion"
+import {
+  CustomButton,
+  Tab,
+  AIPicker,
+  ColorPicker,
+  FilePicker,
+} from "../components"
 
 const Customizer = () => {
   const snap = useSnapshot(state)
@@ -26,7 +37,10 @@ const Customizer = () => {
             </div>
           </motion.div>
 
-          <motion.div className="absolute z-10 z-10 top-5 right-5">
+          <motion.div
+            className="absolute z-10 z-10 top-5 right-5"
+            {...fadeAnimation}
+          >
             <CustomButton
               type="filled"
               title="Go Back"

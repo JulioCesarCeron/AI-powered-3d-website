@@ -3,7 +3,6 @@ import state from "../store"
 
 const CustomButton = ({ type, title, customStyles, handleClick }) => {
   const snap = useSnapshot(state)
-  console.log("snap", snap.color)
 
   const generateStyle = (type) => {
     if (type === "filled") {

@@ -9,7 +9,9 @@ const Shirt = () => {
   const snap = useSnapshot(state)
   const stateString = JSON.stringify(snap)
 
-  const { nodes, materials } = useGLTF("/shirt_baked.glb")
+  const { nodes, materials } = useGLTF(
+    `${import.meta.env.BASE_URL}/shirt_baked.glb`
+  )
 
   const logoTexture = useTexture(snap.logoDecal)
   const fullTexture = useTexture(snap.fullDecal)
